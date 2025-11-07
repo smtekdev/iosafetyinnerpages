@@ -1,0 +1,1353 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo/image-21-1.jpeg">
+  <title>Certifications - Safety Training Websites</title>
+  <link rel="stylesheet preload" href="assets/css/plugins/fontawesome.css" as="style">
+  <link rel="stylesheet preload" href="assets/css/plugins/swiper.css" as="style">
+  <link rel="stylesheet preload" href="assets/css/plugins/metismenu.css" as="style">
+  <link rel="stylesheet preload" href="assets/css/plugins/magnifying-popup.css" as="style">
+  <link rel="stylesheet preload" href="assets/css/plugins/odometer.css" as="style">
+  <link rel="stylesheet preload" href="assets/css/vendor/bootstrap.min.css" as="style">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link
+    href="../css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet preload" as="style">
+  <link rel="preload" as="image" href="assets/images/banner/21.webp">
+  <link rel="stylesheet preload" href="assets/css/style.css" as="style">
+</head>
+
+<body>
+
+  <style>
+    /* ====== Tokens (tweak freely) ====== */
+    :root {
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #e6e8ee;
+      --soft: #f5f7fb;
+      --brand: #2263a3;
+      --accent: #10b981;
+      --warn: #f59e0b;
+      --radius: 16px;
+      --shadow: 0 8px 30px rgba(2, 6, 23, .08);
+    }
+
+    .certification-area {
+      background: #fff;
+      position: relative;
+      z-index: 1
+    }
+
+    .certification-area .section-hd {
+      max-width: 860px;
+      margin: 0 auto 28px;
+      text-align: center
+    }
+
+    .certification-area .eyebrow {
+      display: inline-block;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--brand);
+      background: rgba(34, 99, 163, .08);
+      padding: 6px 12px;
+      border-radius: 999px
+    }
+
+    .certification-area h2.title {
+      font-family: "Red Hat Display", system-ui, Segoe UI, Roboto, Arial, sans-serif;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 12px 0 10px
+    }
+
+    .certification-area p.lead {
+      color: var(--muted);
+      margin: 0 auto 6px
+    }
+
+    /* Filter Pills */
+    .cert-filter {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin: 26px auto 36px
+    }
+
+    .cert-filter button {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: .2s
+    }
+
+    .cert-filter button.active,
+    .cert-filter button:hover {
+      border-color: var(--brand);
+      color: #fff;
+      background: var(--brand);
+      transform: translateY(-1px)
+    }
+
+    /* Grid */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px
+    }
+
+    @media (max-width:1200px) {
+      .cert-grid {
+        grid-template-columns: repeat(8, 1fr)
+      }
+    }
+
+    @media (max-width:768px) {
+      .cert-grid {
+        grid-template-columns: repeat(4, 1fr)
+      }
+    }
+
+    .cert-card {
+      grid-column: span 4;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column
+    }
+
+    .cert-media {
+      aspect-ratio: 16/10;
+      background: var(--soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative
+    }
+
+    .cert-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .cert-badge {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--brand)
+    }
+
+    .cert-body {
+      padding: 16px
+    }
+
+    .cert-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 6px
+    }
+
+    .cert-meta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 10px
+    }
+
+    .cert-meta i {
+      margin-right: 6px
+    }
+
+    .cert-desc {
+      color: var(--ink);
+      opacity: .8;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 12px
+    }
+
+    .cert-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+      padding: 0 16px 16px
+    }
+
+    .btn-chip {
+      flex: 1;
+      text-align: center;
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: .2s
+    }
+
+    .btn-chip.primary {
+      background: var(--brand);
+      color: #fff;
+      border-color: var(--brand)
+    }
+
+    .btn-chip.primary:hover {
+      filter: brightness(.95)
+    }
+
+    .btn-chip.soft {
+      background: #fff;
+      color: var(--ink)
+    }
+
+    .btn-chip.soft:hover {
+      border-color: var(--brand);
+      color: var(--brand)
+    }
+
+    /* Steps */
+    .cert-steps {
+      margin-top: 64px;
+      background: linear-gradient(180deg, #f9fbff, rgba(249, 251, 255, 0));
+      border: 1px dashed var(--line);
+      border-radius: 20px;
+      padding: 24px
+    }
+
+    .steps-row {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px
+    }
+
+    .step {
+      grid-column: span 3;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px
+    }
+
+    @media (max-width:992px) {
+      .step {
+        grid-column: span 6
+      }
+    }
+
+    @media (max-width:576px) {
+      .step {
+        grid-column: span 12
+      }
+    }
+
+    .step .num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      background: rgba(34, 99, 163, .1);
+      color: var(--brand);
+      font-weight: 800;
+      margin-bottom: 10px
+    }
+
+    .step h6 {
+      font-size: 15px;
+      font-weight: 800;
+      margin: 4px 0 6px;
+      color: var(--ink)
+    }
+
+    .step p {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0
+    }
+
+    /* FAQ */
+    .cert-faq {
+      margin-top: 48px
+    }
+
+    .faq-item {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      background: #fff
+    }
+
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      font-weight: 700;
+      color: var(--ink);
+      cursor: pointer
+    }
+
+    .faq-a {
+      display: none;
+      padding: 0 16px 16px;
+      color: var(--muted);
+      font-size: 14px
+    }
+
+    /* CTA */
+    .cert-cta {
+      margin-top: 40px;
+      text-align: center;
+      background: #0f172a;
+      border-radius: 20px;
+      padding: 28px;
+      color: #fff
+    }
+
+    .cert-cta .mini {
+      opacity: .8;
+      margin-bottom: 6px
+    }
+
+    .cert-cta .cta-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 10px;
+      flex-wrap: wrap
+    }
+
+    .btn-cta {
+      border: 1px solid rgba(255, 255, 255, .2);
+      background: #fff;
+      color: #0f172a;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 800
+    }
+
+    .btn-cta.alt {
+      background: transparent;
+      color: #fff
+    }
+
+    /* Modal (preview/verify) */
+    .cert-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, .5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999
+    }
+
+    .cert-modal .dialog {
+      width: min(920px, 92vw);
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden
+    }
+
+    .dialog-hd {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .dialog-bd {
+      padding: 16px
+    }
+
+    .dialog-bd img {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px
+    }
+
+    .dialog-ft {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      padding: 12px 16px;
+      border-top: 1px solid var(--line)
+    }
+
+    .btn {
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 700
+    }
+
+    .btn.primary {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: #fff
+    }
+  </style>
+
+
+  <header class="header-one header--sticky">
+    <div class="header-top-area-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="header-top-one-wrapper">
+              <div class="left">
+                <div class="mail">
+                  <a href="mailto:webmaster@example.com"><i class="fal fa-envelope"></i>
+                    support@iosafety.com</a>
+                </div>
+                <div class="working-time">
+                  <p><i class="fal fa-clock"></i> Hours: 8.00am - 5.00pm</p>
+                </div>
+              </div>
+              <div class="right">
+                <ul class="top-nav">
+                  <li><a href="#">Company News</a></li>
+                  <li><a href="#">Faq</a></li>
+                  <li><a href="#">Contact</a></li>
+                </ul>
+                <ul class="social-wrapper-one">
+                  <li><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                  <li><a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a></li>
+                  <li><a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a></li>
+                  <li><a class="mr--0" href="#" aria-label="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="header-main">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="header-main-one-wrapper">
+              <div class="thumbnail">
+                <a href="#">
+                  <img src="assets/images/logo/image-21-1.jpeg" style="max-width: 27%;" alt="finbiz-logo">
+                </a>
+              </div>
+              <div class="main-header">
+                <div class="main-header">
+                  <div class="nav-area">
+                    <ul class="">
+                      <li class="main-nav mega-menu project-a-after">
+                        <a href="index.html">Home</a>
+
+                      </li>
+
+                      <li class="main-nav  mega-menu">
+                        <a href="courses.html">Courses</a>
+
+                      </li>
+
+                      <li class="main-nav  mega-menu">
+                        <a href="certifications.html">Certifications</a>
+                      </li>
+
+                      <li class="main-nav project-a-after">
+                        <a href="blog.html">Blogs</a>
+
+                      </li>
+                      <li class="main-nav  project-a-after">
+                        <a href="contact.html">Contact</a>
+
+                      </li>
+                    </ul>
+                  </div>
+
+
+
+                  <div class="loader-wrapper">
+                    <div class="loader">
+                    </div>
+                    <div class="loader-section section-left"></div>
+                    <div class="loader-section section-right"></div>
+                  </div>
+                  <div class="button-area">
+
+                    <a href="#" class="rts-btn btn-primary ml--20 ml_sm--5 header-one-btn quote-btn">Get
+                      Quote</a>
+                    <!-- <button id="menu-btn" aria-label="Menu" class="menu-btn menu ml--20 ml_sm--5">
+                                        <img class="menu-light" src="assets/images/icons/01.svg" alt="Menu-icon">
+                                    </button> -->
+                  </div>
+                </div>
+
+
+                <div class="loader-wrapper">
+                  <div class="loader">
+                  </div>
+                  <div class="loader-section section-left"></div>
+                  <div class="loader-section section-right"></div>
+                </div>
+                <div class="button-area">
+
+                  <a href="#" class="rts-btn btn-primary ml--20 ml_sm--5 header-one-btn quote-btn">Get
+                    Quote</a>
+                  <!-- <button id="menu-btn" aria-label="Menu" class="menu-btn menu ml--20 ml_sm--5">
+                                        <img class="menu-light" src="assets/images/icons/01.svg" alt="Menu-icon">
+                                    </button> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="rts-breadcrumb-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="title-area-left center">
+            <span class="bg-title">Certifications</span>
+            <h1 class="title rts-text-anime-style-1">
+              Certifications
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="shape-area">
+      <img src="assets/images/about/icons/01.svg" alt="icons" class="one">
+      <img src="assets/images/about/icons/02.svg" alt="icons" class="two">
+      <img src="assets/images/about/icons/08.svg" alt="icons" class="three">
+    </div> -->
+  </div>
+
+
+
+  <!-- ===================== CERTIFICATION SECTION (A–Z) ===================== -->
+  <!-- ===================== CERTIFICATION SECTION (READY + ONLINE IMAGES) ===================== -->
+  <section id="certification" class="rts-section certification-area pt--100 pb--120">
+
+
+    <div class="container">
+      <!-- Heading -->
+      <div class="section-hd">
+        <span class="eyebrow">Certification</span>
+        <h2 class="title rts-text-anime-style-1">Earn Industry-Recognized Safety Certifications</h2>
+        <p class="lead">Complete expert-led courses, pass assessments, and download shareable certificates with unique
+          verification IDs.</p>
+      </div>
+
+      <!-- Filters -->
+      <div class="cert-filter" role="tablist" aria-label="Filter Certifications">
+        <button class="active" data-cert-filter="all">All</button>
+        <button data-cert-filter="osha">OSHA</button>
+        <button data-cert-filter="firstaid">First Aid & CPR</button>
+        <button data-cert-filter="fire">Fire Safety</button>
+        <button data-cert-filter="construction">Construction</button>
+      </div>
+
+      <!-- Grid -->
+      <div class="cert-grid" id="certGrid">
+        <!-- Card 1 -->
+        <article class="cert-card" data-tags="osha construction">
+          <div class="cert-media">
+            <img src="https://placehold.co/1200x750?text=OSHA-10+Construction"
+              alt="OSHA-10 Construction certificate preview">
+            <span class="cert-badge"><i class="fa-solid fa-id-badge"></i> Verifiable</span>
+          </div>
+          <div class="cert-body">
+            <h3 class="cert-title">OSHA-10 Construction</h3>
+            <div class="cert-meta">
+              <span><i class="fa-regular fa-clock"></i> 10 Hours</span>
+              <span><i class="fa-regular fa-star"></i> Beginner</span>
+              <span><i class="fa-solid fa-hashtag"></i> CERT-OS10-001</span>
+            </div>
+            <p class="cert-desc">Covers essential hazard recognition, PPE, fall protection, and site best practices for
+              entry-level workers.</p>
+          </div>
+          <div class="cert-actions">
+            <a href="#" class="btn-chip soft js-preview"
+              data-img="https://placehold.co/1200x750?text=OSHA-10+Preview">Preview</a>
+            <a href="#" class="btn-chip primary">Get Certified</a>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="cert-card" data-tags="firstaid">
+          <div class="cert-media">
+            <img src="https://placehold.co/1200x750?text=First+Aid+%26+CPR%2FAED"
+              alt="First Aid & CPR/AED certificate preview">
+            <span class="cert-badge"><i class="fa-solid fa-id-badge"></i> Verifiable</span>
+          </div>
+          <div class="cert-body">
+            <h3 class="cert-title">First Aid &amp; CPR/AED</h3>
+            <div class="cert-meta">
+              <span><i class="fa-regular fa-clock"></i> 6 Hours</span>
+              <span><i class="fa-regular fa-star"></i> All Levels</span>
+              <span><i class="fa-solid fa-hashtag"></i> CERT-FAC-213</span>
+            </div>
+            <p class="cert-desc">Adult and child CPR/AED, bleeding control, shock, choking, recovery position, and
+              emergency response.</p>
+          </div>
+          <div class="cert-actions">
+            <a href="#" class="btn-chip soft js-preview"
+              data-img="https://placehold.co/1200x750?text=First+Aid+Certificate+Preview">Preview</a>
+            <a href="#" class="btn-chip primary">Get Certified</a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="cert-card" data-tags="fire">
+          <div class="cert-media">
+            <img src="https://placehold.co/1200x750?text=Fire+Safety+%26+Extinguisher"
+              alt="Fire Safety & Extinguisher certificate preview">
+            <span class="cert-badge" style="color:var(--warn);"><i class="fa-solid fa-fire-extinguisher"></i> Hot
+              Topic</span>
+          </div>
+          <div class="cert-body">
+            <h3 class="cert-title">Fire Safety &amp; Extinguisher</h3>
+            <div class="cert-meta">
+              <span><i class="fa-regular fa-clock"></i> 3 Hours</span>
+              <span><i class="fa-regular fa-star"></i> Beginner</span>
+              <span><i class="fa-solid fa-hashtag"></i> CERT-FIRE-118</span>
+            </div>
+            <p class="cert-desc">Fire triangle, classes of fire, PASS technique, inspection &amp; maintenance, and
+              evacuation basics.</p>
+          </div>
+          <div class="cert-actions">
+            <a href="#" class="btn-chip soft js-preview"
+              data-img="https://placehold.co/1200x750?text=Fire+Safety+Preview">Preview</a>
+            <a href="#" class="btn-chip primary">Get Certified</a>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="cert-card" data-tags="osha">
+          <div class="cert-media">
+            <img src="https://placehold.co/1200x750?text=OSHA-30+General+Industry"
+              alt="OSHA-30 General Industry certificate preview">
+            <span class="cert-badge"><i class="fa-solid fa-shield-halved"></i> Advanced</span>
+          </div>
+          <div class="cert-body">
+            <h3 class="cert-title">OSHA-30 General Industry</h3>
+            <div class="cert-meta">
+              <span><i class="fa-regular fa-clock"></i> 30 Hours</span>
+              <span><i class="fa-regular fa-star"></i> Advanced</span>
+              <span><i class="fa-solid fa-hashtag"></i> CERT-OS30-442</span>
+            </div>
+            <p class="cert-desc">In-depth hazard analysis, incident reporting, lockout/tagout, ergonomics, and
+              compliance strategy.</p>
+          </div>
+          <div class="cert-actions">
+            <a href="#" class="btn-chip soft js-preview"
+              data-img="https://placehold.co/1200x750?text=OSHA-30+Preview">Preview</a>
+            <a href="#" class="btn-chip primary">Get Certified</a>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="cert-card" data-tags="construction osha">
+          <div class="cert-media">
+            <img src="https://placehold.co/1200x750?text=Fall+Protection" alt="Fall Protection certificate preview">
+            <span class="cert-badge"><i class="fa-solid fa-helmet-safety"></i> Site Safety</span>
+          </div>
+          <div class="cert-body">
+            <h3 class="cert-title">Fall Protection</h3>
+            <div class="cert-meta">
+              <span><i class="fa-regular fa-clock"></i> 2 Hours</span>
+              <span><i class="fa-regular fa-star"></i> Beginner</span>
+              <span><i class="fa-solid fa-hashtag"></i> CERT-FALL-074</span>
+            </div>
+            <p class="cert-desc">Anchorage, body support, connectors, rescue planning, and inspection checklists.</p>
+          </div>
+          <div class="cert-actions">
+            <a href="#" class="btn-chip soft js-preview"
+              data-img="https://placehold.co/1200x750?text=Fall+Protection+Preview">Preview</a>
+            <a href="#" class="btn-chip primary">Get Certified</a>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="cert-card" data-tags="osha">
+          <div class="cert-media">
+            <img src="https://placehold.co/1200x750?text=HazCom+%28GHS%29" alt="HazCom (GHS) certificate preview">
+            <span class="cert-badge"><i class="fa-solid fa-flask-vial"></i> GHS</span>
+          </div>
+          <div class="cert-body">
+            <h3 class="cert-title">HazCom (GHS)</h3>
+            <div class="cert-meta">
+              <span><i class="fa-regular fa-clock"></i> 1.5 Hours</span>
+              <span><i class="fa-regular fa-star"></i> All Levels</span>
+              <span><i class="fa-solid fa-hashtag"></i> CERT-HZC-921</span>
+            </div>
+            <p class="cert-desc">Labels, pictograms, SDS navigation, exposure routes, and safe handling procedures.</p>
+          </div>
+          <div class="cert-actions">
+            <a href="#" class="btn-chip soft js-preview"
+              data-img="https://placehold.co/1200x750?text=HazCom+Preview">Preview</a>
+            <a href="#" class="btn-chip primary">Get Certified</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Steps -->
+      <div class="cert-steps">
+        <div class="section-hd" style="margin-bottom:14px">
+          <h3 class="title" style="font-size:22px">How Certification Works</h3>
+          <p class="lead" style="font-size:14px">Simple, trackable, and compliant from enrollment to verification.</p>
+        </div>
+        <div class="steps-row">
+          <div class="step">
+            <span class="num">1</span>
+            <h6>Choose Your Program</h6>
+            <p>Select OSHA, Fire Safety, First Aid, or Construction modules.</p>
+          </div>
+          <div class="step">
+            <span class="num">2</span>
+            <h6>Complete Training</h6>
+            <p>Self-paced lessons, knowledge checks, and practical demos.</p>
+          </div>
+          <div class="step">
+            <span class="num">3</span>
+            <h6>Pass Assessment</h6>
+            <p>Score meets threshold; retakes available where applicable.</p>
+          </div>
+          <div class="step">
+            <span class="num">4</span>
+            <h6>Download & Verify</h6>
+            <p>Instant certificate + unique ID for employer verification.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="cert-faq">
+        <div class="section-hd" style="margin-bottom:14px">
+          <h3 class="title" style="font-size:22px">Certification FAQ</h3>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">How long does my certificate stay valid? <i class="fa-solid fa-chevron-down"></i></div>
+          <div class="faq-a">Most certs remain valid for 2–3 years. Some (like CPR) require annual refreshers. Your
+            certificate shows the exact expiry.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Do I get a physical card? <i class="fa-solid fa-chevron-down"></i></div>
+          <div class="faq-a">Yes—digital certificates are instant. You can also request an optional printed wallet card
+            during checkout.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">How can employers verify? <i class="fa-solid fa-chevron-down"></i></div>
+          <div class="faq-a">Each certificate has a unique ID (e.g., CERT-OS10-001). Employers can enter it on our
+            Verify page to confirm authenticity.</div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="cert-cta">
+        <div class="mini">Ready to upskill your team?</div>
+        <h3 style="margin:0 0 6px">Get Certified With IO Safety</h3>
+        <p style="margin:0;opacity:.9">Bulk enrollments • LMS tracking • Company-wide dashboards</p>
+        <div class="cta-actions">
+          <a href="#" class="btn-cta"><i class="fa-solid fa-rocket"></i> Browse All Certifications</a>
+          <a href="#contact" class="btn-cta alt"><i class="fa-solid fa-user-group"></i> Talk to Sales</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview / Verify Modal -->
+    <div class="cert-modal" id="certModal" aria-hidden="true" role="dialog" aria-label="Certificate preview">
+      <div class="dialog">
+        <div class="dialog-hd">
+          <strong>Certificate Preview</strong>
+          <button class="btn js-close-modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="dialog-bd">
+          <img id="certPreviewImg" src="" alt="Certificate image preview">
+        </div>
+        <div class="dialog-ft">
+          <button class="btn js-close-modal">Close</button>
+          <a href="#" class="btn primary"><i class="fa-solid fa-download"></i> Download Sample</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===================== /CERTIFICATION SECTION ===================== -->
+
+  <!-- ===================== /CERTIFICATION SECTION ===================== -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- rts footer two area wrapper -->
+  <div class="rts-footer-area footer-two mt-dec-footer-map bg-footer-two bg_image">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="map-area-main-wrapper">
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="map-area-main-footer-two">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3181.657324639562!2d-119.86410199999999!3d36.81529889999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809468a0cb30db8b%3A0xad66a2b0aa31be85!2s5396%20N%20Reese%20Ave%2C%20Fresno%2C%20CA%2093722%2C%20USA!5e1!3m2!1sen!2s!4v1761943693545!5m2!1sen!2s"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+              </div>
+              <div class="col-lg-5">
+                <div class="map-information-2-footer">
+                  <h5 class="title-main">Contact Us</h5>
+                  <img loading="lazy" src="assets/images/footer/02.svg" alt="line" class="line">
+                  <div class="contact-information-main-wrapper">
+                    <div class="signle-contact-information">
+                      <div class="icon">
+                        <i class="fa-solid fa-phone"></i>
+                      </div>
+                      <div class="information-wrapper">
+                        <span>Call Us 24/7</span>
+                        <a href="#">
+                          <h6 class="title">(+256) 2145.2156</h6>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="signle-contact-information">
+                      <div class="icon">
+                        <i class="fa-regular fa-envelope"></i>
+                      </div>
+                      <div class="information-wrapper">
+                        <span>Work with us</span>
+                        <a href="#">
+                          <h6 class="title">info@iosafety.com</h6>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="signle-contact-information">
+                      <div class="icon">
+                        <i class="fa-sharp fa-solid fa-location-dot"></i>
+                      </div>
+                      <div class="information-wrapper">
+                        <span>Our Location</span>
+                        <a href="#">
+                          <h6 class="title">5396 North Reese Avenue, Fresno CA 93722</h6>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container bg-shape-f1">
+      <!-- rts footer area -->
+      <div class="row pt--120 pt_sm--80 pb--80 pb_sm--40">
+
+        <div class="col-xl-4 col-md-6 col-sm-12 col-12">
+          <div class="footer-one-single-wized mid-bg">
+            <div class="wized-title">
+              <h5 class="title">Opening Hours</h5>
+              <img loading="lazy" src="assets/images/footer/01.svg" alt="finbiz_footer">
+            </div>
+            <div class="opening-time-inner">
+              <div class="single-opening">
+                <p class="day">Week Days</p>
+                <p class="time">09.00 - 24:00</p>
+              </div>
+              <div class="single-opening">
+                <p class="day">Saturday</p>
+                <p class="time">08:00 - 03.00</p>
+              </div>
+              <div class="single-opening mb--30 mb_sm--10">
+                <p class="day">Sunday</p>
+                <p class="time">Day Off</p>
+              </div>
+              <a href="#" class="rts-btn btn-primary btn-white">Contact Us</a>
+            </div>
+          </div>
+        </div>
+        <!-- footer mid area end -->
+        <div class="col-xl-4 col-md-6 col-sm-12 col-12 pl--50 pl_sm--15">
+          <div class="footer-one-single-wized">
+            <div class="wized-title">
+              <h5 class="title">Quick Links</h5>
+              <img loading="lazy" src="assets/images/footer/01.svg" alt="finbiz_footer">
+            </div>
+            <div class="quick-link-inner">
+              <ul class="links">
+                <li><a href="#"><i class="far fa-arrow-right"></i> Memberships</a></li>
+                <li><a href="#"><i class="far fa-arrow-right"></i> Help &amp; FAQ</a></li>
+                <li><a href="#"><i class="far fa-arrow-right"></i> Contact Us</a></li>
+                <li><a href="#"><i class="far fa-arrow-right"></i> Courses</a></li>
+                <li><a href="#"><i class="far fa-arrow-right"></i> Cookie Policy</a></li>
+              </ul>
+              <ul class="links margin-left-70">
+                <li><a href="#"><i class="far fa-arrow-right"></i> About Us</a></li>
+                <li><a href="#"><i class="far fa-arrow-right"></i> My Account</a></li>
+                <li><a href="#"><i class="far fa-arrow-right"></i>Our Company</a></li>
+                <li><a href="#"><i class="far fa-arrow-right"></i>Service</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- footer mid area -->
+
+        <!-- footer end area post -->
+        <div class="col-xl-4 col-md-6 col-sm-12 col-12">
+          <div class="footer-one-single-wized margin-left-65">
+            <div class="wized-title">
+              <h5 class="title">Get Updates</h5>
+              <img loading="lazy" src="assets/images/footer/01.svg" alt="finbiz_footer">
+            </div>
+            <div class="body">
+              <div class="update-wrapper">
+                <p class="disc">Sign up for our latest news &amp; articles. We won’t give you spam
+                  mails.</p>
+                <form class="email-footer-area">
+                  <input type="email" placeholder="Enter Email Address" required="">
+                  <button type="submit" title="Close menu"><i class="fas fa-location-arrow"></i></button>
+                </form>
+                <div class="note-area">
+                  <p><span>Note:</span> We do not publish your email</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- footer end area post end-->
+      </div>
+      <!-- rts footer area End -->
+    </div>
+    <!-- copyright area start -->
+    <div class="rts-copyright-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="text-center">
+              <p>IO Safety
+                <script>
+                  document.write(
+                    new Date().getFullYear()
+                  )
+                </script>. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- copyright area end -->
+  </div>
+  <!-- rts footer two area wrapper end -->
+
+
+
+  <div id="side-bar" class="side-bar header-two">
+    <button class="close-icon-menu" title="Close menu"><i class="far fa-times"></i></button>
+    <!-- inner menu area desktop start -->
+    <div class="rts-sidebar-menu-desktop">
+      <a class="logo-1" href="#"><img class="logo" src="assets/images/logo/image-21-1.jpeg" alt="finbiz_logo"></a>
+      <div class="body d-none d-xl-block">
+        <p class="disc">
+          We provide certified safety training programs designed to build safer workplaces, enhance
+          compliance, and empower professionals with real-world skills.
+        </p>
+        <div class="get-in-touch">
+          <!-- title -->
+          <div class="h6 title">Get In Touch</div>
+          <!-- title End -->
+          <div class="wrapper">
+            <!-- single -->
+            <div class="single">
+              <i class="fas fa-phone-alt"></i>
+              <a href="#">+8801234566789</a>
+            </div>
+            <!-- single ENd -->
+            <!-- single -->
+            <div class="single">
+              <i class="fas fa-envelope"></i>
+              <a href="#">support@iosafety.com</a>
+            </div>
+            <!-- single ENd -->
+            <!-- single -->
+            <div class="single">
+              <i class="fas fa-globe"></i>
+              <a href="#">www.webexample.com</a>
+            </div>
+            <!-- single ENd -->
+            <!-- single -->
+            <div class="single">
+              <i class="fas fa-map-marker-alt"></i>
+              <a href="#">5396 North Reese Avenue, Fresno CA 93722</a>
+            </div>
+            <!-- single ENd -->
+          </div>
+          <div class="social-wrapper-two menu">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+            <!-- <a href="#"><i class="fab fa-linkedin"></i></a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- mobile menu area start -->
+    <!-- <div class="mobile-menu d-block d-xl-none">
+            <nav class="nav-main mainmenu-nav mt--30">
+                <ul class="mainmenu metismenu" id="mobile-menu-active">
+                    <li class="has-droupdown">
+                        <a href="#" class="main" aria-expanded="false">Demos</a>
+                        <ul class="submenu mm-collapse" style="height: 0px;">
+                            <li><a href="index.html">Business One</a></li>
+                            <li><a href="index-two.html">Business Two</a></li>
+                            <li><a href="index-three.html">Business Three</a></li>
+                            <li><a href="index-four.html">Business Four</a></li>
+                            <li><a href="index-five.html">Finance Demo</a></li>
+                            <li><a href="index-six.html">Marketing agency</a></li>
+                            <li><a href="index-seven.html">Business agency</a></li>
+                            <li><a href="index-eight.html">Business Management</a></li>
+                            <li><a href="index-nine.html">Insurance Home</a></li>
+                            <li><a href="index-ten.html">Business Website</a></li>
+                            <li><a href="index-eleven.html">Business Parallax</a></li>
+                            <li><a href="index-twelve.html">Business Video</a></li>
+                            <li><a href="index-thirteen.html">Accountent One</a></li>
+                            <li><a href="index-fourteen.html">Accountent Two</a></li>
+                            <li><a href="index-fifteen.html">HR Website</a></li>
+                            <li><a href="index-sixteen.html">Business Coach</a></li>
+                            <li><a href="index-seventeen.html">SEO Website</a></li>
+                            <li><a href="index-eighteen.html">Technology Demo</a></li>
+                            <li><a href="index-nineteen.html">Business Investment</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-droupdown">
+                        <a href="#" class="main" aria-expanded="false">Onepage</a>
+                        <ul class="submenu mm-collapse" style="height: 0px;">
+                            <li><a href="onepage-one.html">Business One</a></li>
+                            <li><a href="onepage-two.html">Business Two</a></li>
+                            <li><a href="onepage-three.html">Business Three</a></li>
+                            <li><a href="onepage-four.html">Business Four</a></li>
+                            <li><a href="onepage-five.html">Finance Demo</a></li>
+                            <li><a href="onepage-six.html">Marketing agency</a></li>
+                            <li><a href="onepage-seven.html">Business agency</a></li>
+                            <li><a href="onepage-eight.html">Business Management</a></li>
+                            <li><a href="onepage-nine.html">Insurance Home</a></li>
+                            <li><a href="onepage-ten.html">Business Website</a></li>
+                            <li><a href="onepage-eleven.html">Business Parallax</a></li>
+                            <li><a href="onepage-twelve.html">Business Video</a></li>
+                            <li><a href="onepage-thirteen.html">Accountent One</a></li>
+                            <li><a href="onepage-fourteen.html">Accountent Two</a></li>
+                            <li><a href="onepage-fifteen.html">HR Website</a></li>
+                            <li><a href="onepage-sixteen.html">Business Coach</a></li>
+                            <li><a href="onepage-eighteen.html">Technology Demo</a></li>
+                            <li><a href="onepage-nineteen.html">Business Investment</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-droupdown">
+                        <a href="#" class="main" aria-expanded="false">Pages</a>
+                        <ul class="submenu mm-collapse" style="height: 0px;">
+                            <li><a href="about.html">About
+                                    Company</a></li>
+                            <li><a href="service.html">Service</a></li>
+                            <li><a href="service-details.html">Service
+                                    Details</a>
+                            </li>
+                            <li><a href="service-details-2.html">Service
+                                    Details 2</a>
+                            </li>
+                            <li><a href="project.html">Project</a>
+                            </li>
+                            <li><a href="team.html">Team</a>
+                            </li>
+                            <li><a href="team-details.html">Team
+                                    Details</a>
+                            </li>
+                            <li><a href="pricing.html">Pricing</a>
+                            </li>
+                            <li><a href="appoinment.html">Appoinment</a>
+                            </li>
+                            <li><a href="history.html">Our
+                                    History</a>
+                            </li>
+                            <li><a href="blog-list.html">Blog
+                                    List</a>
+                            </li>
+                            <li><a href="blog-grid.html">Blog
+                                    List</a>
+                            </li>
+                            <li><a href="blog-details.html">Blog
+                                    Details</a>
+                            </li>
+                            <li><a href="blog-details-2.html">Blog
+                                    Details 02</a>
+                            </li>
+                            <li><a href="faq.html">Faq's</a>
+                            <li><a href="career.html">Career</a>
+                            </li>
+                            <li><a href="our-mission.html">Our
+                                    Mission</a>
+                            </li>
+                            <li><a href="partners.html">Partners</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-droupdown">
+                        <a href="#" class="main" aria-expanded="false">Services</a>
+                        <ul class="submenu mm-collapse" style="height: 0px;">
+                            <li><a class="mobile-menu-link" href="service.html">Service</a></li>
+                            <li><a class="mobile-menu-link" href="service-details.html">Service Details</a></li>
+                            <li><a class="mobile-menu-link" href="service-details-2.html">Service Details 2</a></li>
+                            <li><a class="mobile-menu-link" href="service-details-3.html">Service Details 3</a></li>
+                            <li><a class="mobile-menu-link" href="service-details-4.html">Service Details 4</a></li>
+                            <li><a class="mobile-menu-link" href="service-details-5.html">Service Details 5</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="has-droupdown">
+                        <a href="#" class="main" aria-expanded="false">Projects</a>
+                        <ul class="submenu mm-collapse">
+                            <li><a href="project.html">Project</a>
+                            </li>
+                            <li><a href="project-slider.html">Project
+                                    Slider</a></li>
+                            <li><a href="project-slider-2.html">Project
+                                    Slider 2</a></li>
+                            <li><a href="project-card-slider.html">Project
+                                    Card Slider</a></li>
+                            <li><a href="project-bg-dark.html">Project
+                                    Bg Dark</a></li>
+                            <li><a href="project-grid.html">Project
+                                    Grid</a></li>
+                            <li><a href="project-grid-col-2.html">Project
+                                    Grid Col 2</a></li>
+                            <li><a href="project-slider-grid.html">Grid Slider</a></li>
+                            <li><a href="project-slider-overflow.html">Project Overflow</a>
+                            </li>
+                            <li><a href="project-grid-col-3.html">Project Grid Col 3</a>
+                            </li>
+                            <li><a href="project-bg-dark.html">Project
+                                    Hide Content</a></li>
+
+
+                            <li><a href="project-slider-2.html">Project
+                                    Hide
+                                    Content wide</a>
+                            </li>
+                            <li><a href="project-grid.html">Project
+                                    Card Hover</a>
+                            </li>
+                            <li><a href="project-slider-2.html">Project
+                                    Slider Image
+                                    Zoom</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-droupdown">
+                        <a href="#" class="main" aria-expanded="false">Shop Pages</a>
+                        <ul class="submenu mm-collapse">
+                            <li><a href="shop.html">Shop</a>
+                            </li>
+                            <li><a href="shop-single.html">Shop
+                                    Details</a>
+                            </li>
+                            <li><a href="account.html">Account</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-droupdown">
+                        <a href="#" class="main" aria-expanded="false">Blog</a>
+                        <ul class="submenu mm-collapse">
+                            <li><a href="blog-grid.html">Blog Grid</a></li>
+                            <li><a href="blog-list.html">Blog List</a></li>
+                            <li><a href="blog-details.html">Blog Details</a></li>
+                            <li><a href="blog-details-2.html">Blog Details 2</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="contact.html" class="main" aria-expanded="false">Contact Us</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="social-wrapper-one">
+                <ul>
+                    <li>
+                        <a href="#" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" aria-label="twitter">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" aria-label="youtube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" aria-label="linkedin">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div> -->
+    <!-- mobile menu area end -->
+  </div>
+  <!-- inner menu area desktop End -->
+
+
+  <!-- offcanvase search -->
+  <div class="search-input-area">
+    <div class="container">
+      <div class="search-input-inner">
+        <div class="input-div">
+          <input class="search-input autocomplete" type="text" placeholder="Search by keyword or #">
+          <button><i class="far fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+    <div id="close" class="search-close-icon"><i class="far fa-times"></i></div>
+  </div>
+  <div id="anywhere-home" class="">
+  </div>
+
+  <!-- rtl btn area start -->
+  <!-- <div class="rtl-ltr-switcher-btn">
+        <span class="rtl show">View RTL</span>
+        <span class="ltr">View LTR</span>
+    </div> -->
+  <!-- rtl btn area end -->
+
+  <!-- progress area start -->
+  <div class="progress-wrap">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
+      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+        style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
+      </path>
+    </svg>
+  </div>
+  <!-- progress area end -->
+
+  <script defer="" src="assets/js/plugins/jquery.js"></script>
+
+  <script defer="" src="assets/js/plugins/odometer.js"></script>
+  <script defer="" src="assets/js/plugins/jquery-appear.js"></script>
+
+
+  <script defer="" src="assets/js/plugins/gsap.js"></script>
+  <script defer="" src="assets/js/plugins/split-text.js"></script>
+  <script defer="" src="assets/js/plugins/scroll-trigger.js"></script>
+  <script defer="" src="assets/js/plugins/smooth-scroll.js"></script>
+  <script defer="" src="assets/js/plugins/metismenu.js"></script>
+  <script defer="" src="assets/js/plugins/popup.js"></script>
+
+  <script defer="" src="assets/js/vendor/bootstrap.min.js"></script>
+  <script defer="" src="assets/js/plugins/swiper.js"></script>
+  <script defer="" src="assets/js/plugins/contact.form.js"></script>
+
+  <script defer="" src="assets/js/main.js"></script>
+
+  <!-- Tiny JS (no external deps) -->
+  <script>
+      (function () {
+        // Filter
+        const buttons = document.querySelectorAll('[data-cert-filter]');
+        const cards = document.querySelectorAll('.cert-card');
+        buttons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const key = btn.getAttribute('data-cert-filter');
+            cards.forEach(c => {
+              const tags = (c.getAttribute('data-tags') || '').split(' ');
+              const show = key === 'all' || tags.includes(key);
+              c.style.display = show ? '' : 'none';
+            });
+          });
+        });
+
+        // FAQ
+        document.querySelectorAll('.faq-item .faq-q').forEach(q => {
+          q.addEventListener('click', () => {
+            const a = q.nextElementSibling;
+            const open = a.style.display === 'block';
+            document.querySelectorAll('.faq-a').forEach(n => n.style.display = 'none');
+            a.style.display = open ? 'none' : 'block';
+          });
+        });
+
+        // Modal Preview
+        const modal = document.getElementById('certModal');
+        const img = document.getElementById('certPreviewImg');
+        document.querySelectorAll('.js-preview').forEach(el => {
+          el.addEventListener('click', (e) => {
+            e.preventDefault();
+            img.src = el.getAttribute('data-img');
+            modal.style.display = 'flex';
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+          });
+        });
+        document.querySelectorAll('.js-close-modal').forEach(el => {
+          el.addEventListener('click', () => {
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+          });
+        });
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+          }
+        });
+      })();
+  </script>
+</body>
+
+</html>
