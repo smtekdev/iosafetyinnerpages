@@ -21,105 +21,110 @@
         rel="stylesheet preload" as="style">
     <link rel="preload" as="image" href="assets/images/banner/21.webp">
     <link rel="stylesheet preload" href="assets/css/style.css" as="style">
+
+<style>
+/* ---------- Custom Hamburger ---------- */
+.custom-menu-btn{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  width:35px;height:30px;border:none;background:none;cursor:pointer;z-index:20001;
+}
+.custom-hamburger{width:100%;height:3px;background:#000;border-radius:3px;transition:all .3s ease;}
+.custom-menu-btn.active .custom-hamburger:nth-child(1){transform:rotate(45deg) translateY(8px)}
+.custom-menu-btn.active .custom-hamburger:nth-child(2){opacity:0}
+.custom-menu-btn.active .custom-hamburger:nth-child(3){transform:rotate(-45deg) translateY(-8px)}
+
+@media (max-width:991px){
+  .custom-menu-btn{display:flex}
+  .nav-area ul{display:none !important;} /* desktop UL off on mobile */
+}
+
+/* ---------- Mobile Menu (with slide animation) ---------- */
+#mobileMenu{position:fixed;inset:0;display:block;pointer-events:none;z-index:20000;}
+#mobileMenu .backdrop{
+  position:fixed;inset:0;background:rgba(0,0,0,.45);
+  opacity:0;transition:opacity .28s ease;pointer-events:none;
+}
+#mobileMenu .panel{
+  position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;
+  display:flex;flex-direction:column;
+  /* slide-up default (hidden) */
+  transform:translateY(-100%);opacity:0;transition:transform .28s ease, opacity .28s ease;
+  pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.18);
+}
+
+/* OPEN STATE */
+#mobileMenu.open{pointer-events:auto;}
+#mobileMenu.open .backdrop{opacity:1;pointer-events:auto;}
+#mobileMenu.open .panel{transform:translateY(0);opacity:1;pointer-events:auto;}
+
+/* panel header: logo up, close on right */
+#mobileMenu .panel-header{
+  position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;
+  gap:12px;background:#fff;padding:14px 16px;border-bottom:1px solid #eee;z-index:1;
+}
+#mobileMenu .panel-header img{max-height:177px;width:auto;display:block;}
+#mobileMenu .close-btn{
+  width:32px;height:32px;border-radius:6px;background:#0f172a;color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+  cursor:pointer;user-select:none;z-index:20002;pointer-events:auto;
+}
+#mobileMenu .panel-body{padding:16px 20px 24px;}
+#mobileMenu .panel-body ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+#mobileMenu .panel-body li a{display:block;padding:12px 6px;color:#0f172a;text-decoration:none;}
+#mobileMenu .panel-body li a:hover{opacity:.85}
+</style>
 </head>
 
 <body>
 
-    <header class="header-one header--sticky">
-        <div class="header-top-area-wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="header-top-one-wrapper">
-                            <div class="left">
-                                <div class="mail">
-                                    <a href="mailto:webmaster@example.com"><i class="fal fa-envelope"></i>
-                                        support@iosafety.com</a>
-                                </div>
-                                <div class="working-time">
-                                    <p><i class="fal fa-clock"></i> Hours: 8.00am - 5.00pm</p>
-                                </div>
-                            </div>
-                            <div class="right">
-                                <ul class="top-nav">
-                                    <li><a href="#">Company News</a></li>
-                                    <li><a href="#">Faq</a></li>
-                                    <li><a href="#">Contact</a></li>
-                                </ul>
-                                <ul class="social-wrapper-one">
-                                    <li><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a class="mr--0" href="#" aria-label="linkedin"><i
-                                                class="fab fa-linkedin-in"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<header class="header-one header--sticky">
+  <div class="header-main">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="header-main-one-wrapper">
+            <div class="thumbnail">
+              <a href="#"><img src="assets/images/logo/image-21-1.jpeg" style="max-width:27%;" alt="finbiz-logo"></a>
             </div>
+
+            <div class="main-header">
+              <div class="nav-area">
+                <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="courses.html">Courses</a></li>
+                  <li><a href="certifications.html">Certifications</a></li>
+                  <li><a href="blog.html">Blogs</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                </ul>
+              </div>
+              <div class="button-area">
+                <a href="#" class="rts-btn btn-primary header-one-btn quote-btn">Get Quote</a>
+                <!-- renamed to avoid theme conflicts -->
+                <button aria-label="Menu" class="custom-menu-btn" type="button">
+                  <span class="custom-hamburger"></span>
+                  <span class="custom-hamburger"></span>
+                  <span class="custom-hamburger"></span>
+                </button>
+              </div>
+            </div><!-- /.main-header -->
+          </div>
         </div>
-        <div class="header-main">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="header-main-one-wrapper">
-                            <div class="thumbnail">
-                                <a href="#">
-                                    <img src="assets/images/logo/image-21-1.jpeg" style="max-width: 27%;"
-                                        alt="finbiz-logo">
-                                </a>
-                            </div>
-                            <div class="main-header">
-                                <div class="nav-area">
-                                    <ul class="">
-                                        <li class="main-nav mega-menu project-a-after">
-                                            <a href="index.html">Home</a>
-
-                                        </li>
-
-                                        <li class="main-nav  mega-menu">
-                                            <a href="courses.html">Courses</a>
-
-                                        </li>
-
-                                        <li class="main-nav  mega-menu">
-                                            <a href="certifications.html">Certifications</a>
-                                        </li>
-
-                                        <li class="main-nav project-a-after">
-                                            <a href="blog.html">Blogs</a>
-
-                                        </li>
-                                        <li class="main-nav  project-a-after">
-                                            <a href="contact.html">Contact</a>
-
-                                        </li>
-                                    </ul>
-                                </div>
+      </div>
+    </div>
+  </div>
+</header>
 
 
-                                <div class="loader-wrapper">
-                                    <div class="loader">
-                                    </div>
-                                    <div class="loader-section section-left"></div>
-                                    <div class="loader-section section-right"></div>
-                                </div>
-                                <div class="button-area">
-
-                                    <a href="#" class="rts-btn btn-primary ml--20 ml_sm--5 header-one-btn quote-btn">Get
-                                        Quote</a>
-                                    <!-- <button id="menu-btn" aria-label="Menu" class="menu-btn menu ml--20 ml_sm--5">
-                                        <img class="menu-light" src="assets/images/icons/01.svg" alt="Menu-icon">
-                                    </button> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+<div id="mobileMenu" aria-hidden="true">
+  <div class="backdrop"></div>
+  <div class="panel">
+    <div class="panel-header">
+      <img class="panel-logo" src="assets/images/logo/image-21-1.jpeg" alt="logo" style=""/>
+      
+    </div>
+    <div class="panel-body"><!-- cloned UL goes here --></div>
+  </div>
+</div>
 
 
     <div class="banner-swiper-two">
@@ -1545,6 +1550,17 @@
     </div>
     <!-- progress area end -->
 
+
+    <script>
+        document.getElementById('menu-btn').addEventListener('click', function () {
+            this.classList.toggle('active');
+            document.querySelector('.nav-area').classList.toggle('active');
+        });
+    </script>
+
+
+
+
     <script defer="" src="assets/js/plugins/jquery.js"></script>
 
     <script defer="" src="assets/js/plugins/odometer.js"></script>
@@ -1563,6 +1579,170 @@
     <script defer="" src="assets/js/plugins/contact.form.js"></script>
 
     <script defer="" src="assets/js/main.js"></script>
+
+<style>
+/* ---- Hamburger (custom) ---- */
+.custom-menu-btn{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  width:35px;height:30px;border:none;background:none;cursor:pointer;z-index:20001;
+}
+.custom-hamburger{width:100%;height:3px;background:#000;border-radius:3px;transition:all .3s ease;}
+.custom-menu-btn.active .custom-hamburger:nth-child(1){transform:rotate(45deg) translateY(8px)}
+.custom-menu-btn.active .custom-hamburger:nth-child(2){opacity:0}
+.custom-menu-btn.active .custom-hamburger:nth-child(3){transform:rotate(-45deg) translateY(-8px)}
+
+@media (max-width:991px){
+  .custom-menu-btn{display:flex}
+  /* desktop UL ko hide; cloned version mobile panel me dikhega */
+  .nav-area ul{display:none !important;}
+}
+
+/* ---- Mobile Panel ---- */
+#mobileMenu{position:fixed;inset:0;display:none;z-index:20000;}
+#mobileMenu.open{display:block;}
+#mobileMenu .backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);}
+
+#mobileMenu .panel{
+  position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;overflow:auto;
+  box-shadow:0 8px 24px rgba(0,0,0,.18);
+}
+
+/* panel header: logo upar, close right */
+#mobileMenu .panel-header{
+  position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;
+  gap:12px;background:#fff;padding:14px 16px;border-bottom:1px solid #eee;z-index:1;
+}
+#mobileMenu .panel-header img{max-height:88px;width:auto;display:block;}
+#mobileMenu .close-btn{
+  width:32px;height:32px;border-radius:6px;background:#0f172a;color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+  cursor:pointer;user-select:none;
+}
+
+#mobileMenu .panel-body{padding:16px 20px 24px;}
+#mobileMenu .panel-body ul{
+  list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0px;
+}
+#mobileMenu .panel-body li a{display:block;padding:12px 6px;color:#0f172a;text-decoration:none;}
+#mobileMenu .panel-body li a:hover{opacity:.85}
+</style>
+</head>
+
+<body>
+
+<header class="header-one header--sticky">
+  <div class="header-main">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="header-main-one-wrapper">
+            <div class="thumbnail">
+              <a href="#"><img src="assets/images/logo/image-21-1.jpeg" style="max-width:27%;" alt="finbiz-logo"></a>
+            </div>
+
+            <div class="main-header">
+              <div class="nav-area">
+                <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="courses.html">Courses</a></li>
+                  <li><a href="certifications.html">Certifications</a></li>
+                  <li><a href="blog.html">Blogs</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                </ul>
+              </div>
+              <div class="button-area">
+                <a href="#" class="rts-btn btn-primary header-one-btn quote-btn">Get Quote</a>
+                <!-- NOTE: renamed class to avoid theme conflicts -->
+                <button aria-label="Menu" class="custom-menu-btn" type="button">
+                  <span class="custom-hamburger"></span>
+                  <span class="custom-hamburger"></span>
+                  <span class="custom-hamburger"></span>
+                </button>
+              </div>
+            </div><!-- /.main-header -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" aria-hidden="true">
+  <div class="backdrop"></div>
+  <div class="panel">
+    <div class="panel-header">
+      <img class="panel-logo" src="assets/images/logo/image-21-1.jpeg" alt="logo"/>
+      <div class="close-btn" role="button" aria-label="Close">×</div>
+    </div>
+    <div class="panel-body"><!-- cloned UL goes here --></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const btn = document.querySelector('.custom-menu-btn');
+  const navUl = document.querySelector('.nav-area ul');
+  const mm = document.getElementById('mobileMenu');
+  const panel = mm.querySelector('.panel');
+  const bodyWrap = mm.querySelector('.panel-body');
+  const backdrop = mm.querySelector('.backdrop');
+  const closeBtn = mm.querySelector('.close-btn');
+  const headerLogo = document.querySelector('.thumbnail img');
+  const panelLogo = mm.querySelector('.panel-logo');
+  if(headerLogo && panelLogo){ panelLogo.src = headerLogo.getAttribute('src') || panelLogo.src; }
+  if(!btn || !navUl) return;
+
+  // put same nav into panel body
+  const cloned = navUl.cloneNode(true);
+  bodyWrap.appendChild(cloned);
+
+  function killThemeOverlays(){
+    const sel = ['#anywhere-home','.bgshow','.rts-offcanvas','.popup-mobile-menu','.is-open','.offcanvas-open'];
+    sel.forEach(s=>{
+      document.querySelectorAll(s).forEach(el=>{
+        el.classList.remove('bgshow','open','active','is-open','offcanvas-open');
+        el.style.display='none'; el.style.opacity='0'; el.style.visibility='hidden';
+      });
+    });
+  }
+
+  function openMenu(){
+    mm.classList.add('open');           // slide DOWN
+    btn.classList.add('active');
+    document.body.style.overflow='hidden';
+  }
+  function closeMenu(){
+    mm.classList.remove('open');        // slide UP
+    btn.classList.remove('active');
+    document.body.style.overflow='';
+    // wait until slide finishes to avoid theme listeners re-triggering
+    setTimeout(killThemeOverlays, 300);
+  }
+
+  // toggle handlers
+  btn.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation();
+    mm.classList.contains('open') ? closeMenu() : openMenu();
+  }, true);
+
+  closeBtn.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation(); closeMenu(); }, true);
+  backdrop.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation(); closeMenu(); }, true);
+
+  // close on nav click
+  panel.addEventListener('click', (e)=>{
+    if(e.target.closest('a')) { e.preventDefault(); e.stopPropagation(); closeMenu(); }
+  }, true);
+
+  // ESC
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); }, true);
+
+  // prevent theme click-through while open
+  document.addEventListener('click', (e)=>{ if(mm.classList.contains('open')) e.stopPropagation(); }, true);
+})();
+</script>
+
+
+
 </body>
 
 </html>
